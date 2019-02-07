@@ -1,0 +1,9 @@
+@import '../../../styles/variables.scss';
+
+.navbar-brand, a {
+    color: $color-white;
+}
+
+a:hover {
+    color: $color-grey;
+}
