@@ -1,10 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+// @TypeDecorator
 import { NgModule } from '@angular/core';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+// Components (declarations:)
+import { AppComponent } from './app.component'; // Also bootstrap:
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +13,17 @@ import { ChatroomTitleBarComponent } from './pages/chat/components/chatroom-titl
 import { ChatMessageComponent } from './pages/chat/components/chat-message/chat-message.component';
 import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window/chatroom-window.component';
 
+// Modules (imports:)
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+//import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AlertModule } from 'ngx-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
+
+// Services (providers:)
+import { AlertService } from './services/alert.service'
+import { LoadingService } from './services/loading.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +43,14 @@ import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    BsDropdownModule.forRoot()
+    //BsDropdownModule.forRoot(),
+    AlertModule.forRoot(),
+    NgxLoadingModule.forRoot({})
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    LoadingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
