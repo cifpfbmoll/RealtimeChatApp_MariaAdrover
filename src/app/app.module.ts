@@ -25,6 +25,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { AlertService } from './services/alert.service'
 import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AuthService } from './services/auth.service';
   providers: [
     AlertService,
     LoadingService,
-    AuthService
+    AuthService, 
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
