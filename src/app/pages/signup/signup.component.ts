@@ -19,7 +19,8 @@ export class SignupComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   private returnUrl: string;
 
-  constructor(private fb: FormBuilder, 
+  constructor(
+    private fb: FormBuilder, 
     private alertService: AlertService,  
     private loadingService: LoadingService,
     private auth: AuthService,

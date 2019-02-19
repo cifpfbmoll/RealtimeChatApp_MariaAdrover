@@ -1,5 +1,9 @@
-// @TypeDecorator
+// Core modules
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
+import { environment } from '../environments/environment';
 
 // Components (declarations:)
 import { AppComponent } from './app.component'; // Also bootstrap:
@@ -14,12 +18,13 @@ import { ChatMessageComponent } from './pages/chat/components/chat-message/chat-
 import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window/chatroom-window.component';
 
 // Modules (imports:)
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 //import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AlertModule } from 'ngx-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Services (providers:)
 import { AlertService } from './services/alert.service'
@@ -47,12 +52,17 @@ import { AuthGuard } from './guards/auth.guard';
     AppRoutingModule,
     //BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
+
   ],
   providers: [
     AlertService,
     LoadingService,
-    AuthService, 
+    AuthService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
