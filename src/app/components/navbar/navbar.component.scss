@@ -1,24 +1,27 @@
 @import '../../../styles/variables.scss';
 
-.navbar-brand, a {
-    color: $color-white;
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+  
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,255,255);
 }
 
-.nav-item, span {
-    color: #ffffff;
+.nav-item, span, button, .fa-bars, .navbar-brand, a {
+    color: white;
 }
-
- 
 
 a {
+    display: inline-block;
     margin-left: 3em;
     cursor: pointer;
 
     &.active {
-        border-bottom: 3px solid #ff0000;
+        border-bottom: 3px solid orange;
     }
 
-    &.hover {
-        color: $color-grey;
+    &:hover {
+        color: orange;
     }
 }

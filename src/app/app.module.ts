@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
+//prueba navbar
+
+import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+
 // Components (declarations:)
 import { AppComponent } from './app.component'; // Also bootstrap:
 import { LoginComponent } from './pages/login/login.component';
@@ -57,7 +61,8 @@ import { ChatroomService } from './services/chatroom.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CollapseModule.forRoot(), BsDropdownModule.forRoot() //añadido para navbar
 
   ],
   providers: [

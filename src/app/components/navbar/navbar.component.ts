@@ -9,6 +9,12 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   public currentUser: any = null;
+  //isCollapsed = true;prueba navbar
+
+  public show:boolean = false;//prueba2
+  toggleCollapse() {
+    this.show = !this.show
+  }
 
   constructor(
     private auth: AuthService

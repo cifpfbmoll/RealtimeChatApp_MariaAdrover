@@ -1,8 +1,10 @@
-<div class="chat-message d-flex">
-  <img [src]="message.sender.photoUrl" class="rounded-circle">
-  <div class="bubble d-flex flex-column">
+<div class="chat-message d-flex flex-column flex-sm-row align-items-start rounded">
+  <div class=" d-sm-inline-flex w-25 messImg">
+    <img [src]="message.sender.photoUrl" class="rounded-circle">
+  </div>
+  <div class="d-sm-inline-flex flex-column messTxt">
     <div class="name">
-      {{message.sender.firstName}} {{message.sender.lasteName}}
+      <b>{{message.sender.firstName}} {{message.sender.lasteName}}</b>
     </div>
     <small class="timestamp">{{message.createdAt | date:'medium'}}</small>
     <div class="message">

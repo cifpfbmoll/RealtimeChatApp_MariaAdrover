@@ -2,8 +2,8 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
 .container-wrapper {
-    height: calc(100vh - 80px) !important;
-    /*height: calc(100vh - #{$navbar-height}) !important;*/
+    /*height: calc(100vh - 59px) !important;*/
+    height: calc(100vh - #{$navbar-height}) !important;
 }
 /*
 body {
