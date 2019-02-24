@@ -4,12 +4,15 @@
     color: $color-white;
 }
 
-span {
+.nav-item, span {
     color: #ffffff;
 }
 
+ 
+
 a {
     margin-left: 3em;
+    cursor: pointer;
 
     &.active {
         border-bottom: 3px solid #ff0000;

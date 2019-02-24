@@ -54,15 +54,19 @@ export class AuthService {
  
 
   public login(email: string, password: string): Observable<boolean> {
-    // TODO call Firebase login function
-    return of(true);
+    //Firebase login function
+    return from(
+      this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .then((user) => true)
+        .catch((err) => false)
+    );
   }
 
   public logout(): void { //al pulsar logout ira a la pagina del login
     // TODO call Firebase login function
-    this.router.navigate(['/login'])
-    this.alertService.alerts.next(new Alert('You have been signed out'))
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login'])
+      this.alertService.alerts.next(new Alert('You have been signed out'))      
+    });
   }
-
-
 }
