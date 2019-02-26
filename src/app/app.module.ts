@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
-//prueba navbar
-
+// Dropdown test
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 // Components (declarations:)
@@ -30,7 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-// Services (providers:)
+// Services (in providers:)
 import { AlertService } from './services/alert.service'
 import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
@@ -62,7 +61,7 @@ import { ChatroomService } from './services/chatroom.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    CollapseModule.forRoot(), BsDropdownModule.forRoot() //añadido para navbar
+    CollapseModule.forRoot(), BsDropdownModule.forRoot()
 
   ],
   providers: [

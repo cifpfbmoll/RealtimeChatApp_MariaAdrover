@@ -48,8 +48,7 @@ export class SignupComponent implements OnInit {
 
     if (this.signupForm.valid) {
       this.loadingService.isLoading.next(true);
-      const { firstName, lastName, email, password } = this.signupForm.value;
-      
+      const { firstName, lastName, email, password } = this.signupForm.value;      
       this.subscriptions.push(
         this.auth.signup( firstName, lastName, email, password ).subscribe(success => {
           if (success) {
@@ -57,21 +56,15 @@ export class SignupComponent implements OnInit {
           }
           this.loadingService.isLoading.next(false);
         })
-      )
-     
+      )     
     } else {
-      const failedLoginAlert = new Alert('Please enter valid data in all fields.', AlertType.Danger);
-      
-      
+      const failedLoginAlert = new Alert('Please enter valid data in all fields.', AlertType.Danger);      
         this.loadingService.isLoading.next(false);
-        this.alertService.alerts.next(failedLoginAlert);
-     
+        this.alertService.alerts.next(failedLoginAlert);     
     }
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-
-
 }

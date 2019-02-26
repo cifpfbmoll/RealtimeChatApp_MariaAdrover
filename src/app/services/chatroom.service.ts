@@ -6,7 +6,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class ChatroomService {
-
   public chatrooms: Observable<any>;
 
   constructor(private db: AngularFirestore) { 

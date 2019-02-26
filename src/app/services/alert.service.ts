@@ -6,7 +6,6 @@ import { Alert } from '../classes/alert';
   providedIn: 'root'
 }*/)
 export class AlertService {
-
   public alerts: Subject<Alert> = new Subject();
 
   constructor() { }

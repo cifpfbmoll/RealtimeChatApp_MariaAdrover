@@ -16,7 +16,6 @@ export class ChatInputComponent implements OnInit {
 
   public submit(message: string): void {
     console.log('New message: ', message);
-
     this.newMessageText = '';
   }
 

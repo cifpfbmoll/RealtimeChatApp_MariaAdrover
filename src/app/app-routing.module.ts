@@ -5,7 +5,7 @@ import { SignupComponent } from 'src/app/pages/signup/signup.component';
 import { ChatComponent } from 'src/app/pages/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 
-
+// Indicates which is the module to render depending on the path
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/login'},
   {path: 'login', component: LoginComponent},

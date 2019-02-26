@@ -9,9 +9,9 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   public currentUser: any = null;
-  //isCollapsed = true;prueba navbar
+  public show: boolean = false;
 
-  public show:boolean = false;//prueba2
+  // Changes the state of the collapsible navbar, to show/hide the links and the button
   toggleCollapse() {
     this.show = !this.show
   }

@@ -5,8 +5,11 @@
     <button (click)="toggleCollapse()" class="custom-toggler navbar-toggler navbar-toggler-right" type="button">    
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!--Is showed or not depending on the value show variable in .ts file, that changes when clicking the menu button-->
     <div class="page-links collapse navbar-collapse" style="justify-content:flex-end" [class.show]="show">
-      <!--añado todo menos page links-->
+      <!--The content shown depends on currentUser value (from .ts file)
+      If true (user is logged) next list is shown
+      If false, ng-template with id loggedOut is shown-->
       <ul class="navbar-nav navbar-right" *ngIf="currentUser else loggedOut">
         <li class="nav-item">
           <!--<ul class="navbar-nav" *ngIf="true else loggedOut">-->
