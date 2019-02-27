@@ -1,6 +1,8 @@
 <div class="h-100 d-flex flex-column chatroom-list">
+  <!--ChatroomService provides retrieves each chatroom from Firebase to generate the view-->
  <ng-container *ngFor="let chatroom of chatroomService.chatrooms | async">
    <div class="chatroom-list-item">
+     <!--routerLink property gets the value from the chatroom id, and the text to show from the chatroom name-->
      <a [routerLink]="['/chat', chatroom.id]">{{chatroom.name}}</a>
    </div>
  </ng-container>

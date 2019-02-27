@@ -4,7 +4,6 @@ import { Alert } from './classes/alert';
 import { LoadingService } from './services/loading.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

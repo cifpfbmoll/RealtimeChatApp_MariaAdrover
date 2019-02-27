@@ -13,7 +13,6 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
   public currentUser: Observable<User | null>;
 
   constructor(
@@ -22,22 +21,23 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private db: AngularFirestore
   ) {
-    // Fetch the user from the Firebase backend, then set the user
+    // Fetch the user from the Firebase backend, then set the currentUser
     this.currentUser = this.afAuth.authState.pipe(switchMap((user) => {
-        if (user) {
-          return this.db.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      }))
+      if (user) {
+        return this.db.doc<User>(`users/${user.uid}`).valueChanges();
+      } else {
+        return of(null);
+      }
+    }))
   }
 
   public signup(firstName: string, lastName: string, email: string, password: string): Observable<boolean> {
-    //Firebase create a user with email And password
+    //Firebase create a user with email And password...
     return from(
       this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then((user) => {
           const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.user.uid}`);
+          //... and the values that will be stored in the user fields of Firebase
           const updatedUser = {
             id: user.user.uid,
             email: user.user.email,
@@ -51,10 +51,8 @@ export class AuthService {
         .catch((err) => false)
     );
   }
- 
 
   public login(email: string, password: string): Observable<boolean> {
-    //Firebase login function
     return from(
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((user) => true)
@@ -62,11 +60,10 @@ export class AuthService {
     );
   }
 
-  public logout(): void { //al pulsar logout ira a la pagina del login
-    // TODO call Firebase login function
+  public logout(): void { //When logout link is clicked, it goes to login page and shows an alert (Success.type by default)
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/login'])
-      this.alertService.alerts.next(new Alert('You have been signed out'))      
+      this.alertService.alerts.next(new Alert('You have been signed out'))
     });
   }
 }

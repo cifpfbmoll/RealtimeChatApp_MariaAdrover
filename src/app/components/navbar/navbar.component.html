@@ -12,11 +12,10 @@
       If false, ng-template with id loggedOut is shown-->
       <ul class="navbar-nav navbar-right" *ngIf="currentUser else loggedOut">
         <li class="nav-item">
-          <!--<ul class="navbar-nav" *ngIf="true else loggedOut">-->
           <a routerLink="/chat" routerLinkActive="active" class="nav-link">Chat Rooms</a>
         </li>
         <li class="nav-item">
-          <!--<a routerLink="/login" routerLinkActive="active" class="nav-link">Logout</a>-->
+          <!--When clicked AuthService logout function is called-->
           <a class="nav-link" routerLinkActive="active" (click)="auth.logout()">Logout</a>
         </li>
       </ul>

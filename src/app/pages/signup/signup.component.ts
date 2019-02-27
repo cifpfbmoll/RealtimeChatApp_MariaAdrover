@@ -20,13 +20,13 @@ export class SignupComponent implements OnInit {
   private returnUrl: string;
 
   constructor(
-    private fb: FormBuilder, 
-    private alertService: AlertService,  
+    private fb: FormBuilder,
+    private alertService: AlertService,
     private loadingService: LoadingService,
     private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute
-    ) {
+  ) {
     this.createForm();
   }
 
@@ -35,32 +35,39 @@ export class SignupComponent implements OnInit {
   }
 
   private createForm(): void {
+    // Creates the form, setting the form elements properties
+    // All the fields are required for the form to be valid
     this.signupForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]] // 8 characters minimum
     });
   }
 
-
+  //function called when clicking submit button
   public submit(): void {
-
-    if (this.signupForm.valid) {
+    if (this.signupForm.valid) { // if ther form is valid...
+      // ngx-loading element will be shown
       this.loadingService.isLoading.next(true);
-      const { firstName, lastName, email, password } = this.signupForm.value;      
+      // Getting values from the form values
+      const { firstName, lastName, email, password } = this.signupForm.value;
+      // Asking to AuthService to validate the form values 
+      // by pushing subscription and calling AuthService login function    
       this.subscriptions.push(
-        this.auth.signup( firstName, lastName, email, password ).subscribe(success => {
+        this.auth.signup(firstName, lastName, email, password).subscribe(success => {
           if (success) {
-            this.router.navigateByUrl(this.returnUrl);
+            this.router.navigateByUrl(this.returnUrl); // Go to chat page
           }
+          // Hide ngx-loading element
           this.loadingService.isLoading.next(false);
         })
-      )     
+      )
     } else {
-      const failedLoginAlert = new Alert('Please enter valid data in all fields.', AlertType.Danger);      
-        this.loadingService.isLoading.next(false);
-        this.alertService.alerts.next(failedLoginAlert);     
+      // Hide ngx-loading element and show alert
+      const failedLoginAlert = new Alert('Please enter valid data in all fields.', AlertType.Danger);
+      this.loadingService.isLoading.next(false);
+      this.alertService.alerts.next(failedLoginAlert);
     }
   }
 
